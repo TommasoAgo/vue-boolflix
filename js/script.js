@@ -2,10 +2,17 @@ var app = new Vue(
     {
         el: '#root',
         data: {
+            // movieName è vuoto in quanto prende il v-model dalla input dell'utente.
+            // Andrà a popolare la query per la API
             movieName: '',
             movies: []
         },
         methods: {
+
+            // Scrivo una funzione che mi consenta di fare una chiamata Ajax e 
+            // popolare il mio Array 'movies' con il risultato della ricerca.
+            // 
+            // Da associare all'evento sul bottone della input
             searchMovie() {
                 axios
                 .get('https://api.themoviedb.org/3/search/movie', {
