@@ -23,9 +23,26 @@
         <div v-for="(movie, index) in movies" class="single-movie">
 
             <!-- Movie Title -->
-            <div class="title">
-                <span>{{ movie.original_title }}</span>
-            </div>
+            <ul class="movie-details">
+                <li class="title">
+                    Title: {{ movie.title }}
+                </li>
+                <li class="original-title">
+                    Original Title: {{ movie.original_title }}
+                </li>
+                <li class="language">
+                    <div v-if="movie.original_language == 'it' || movie.original_language == 'es' || movie.original_language == 'en'" class="actual-language">
+                        <span>Original Language:</span>
+                        <img :src="'img/' + movie.original_language + '.svg'" alt="">
+                    </div>
+                    <div v-else>
+                        Original Language: Unknown
+                    </div>  
+                </li>
+                <li class="score">
+                    Score: {{ movie.vote_average }}
+                </li>
+            </ul>
         </div>
     </div>
 
