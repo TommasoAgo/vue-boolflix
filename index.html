@@ -17,12 +17,14 @@
 
         <!-- Search input -->
         <input @keyup.enter="searchMovie" v-model="movieName" type="text">
+        <button @click="searchMovie">Cerca film</button>
 
         <!-- Movie Sample -->
         <div v-for="(movie, index) in movies" class="single-movie">
 
+            <!-- Movie Title -->
             <div class="title">
-                <span>{{ }}</span>
+                <span>{{ movie.original_title }}</span>
             </div>
         </div>
     </div>
