@@ -152,6 +152,13 @@ body {
     margin: 10px 0;
 }
 
+/* Movie Title */
+.title {
+    text-transform: uppercase;
+
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 /* Hover on single movie */
 
 .single-movie:hover .movie-details {
