@@ -7,7 +7,7 @@ var app = new Vue(
             movieName: '',
 
             // movies è un Array vuoto che verrà popolato dalla ricerca dell'utente
-            movies: [],
+            movies: []
 
         },
         methods: {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolflix</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
@@ -56,8 +57,11 @@
                     </li>
     
                     <!-- Score -->
-                    <li class="score">
-                        Score: {{ movie.vote_average }}
+                    <!-- Score sarà visibile solo se il voto del film(vote_average) è maggiore di 0 -->
+                    <li v-if="movie.vote_average > 0" class="score">
+
+                        <!-- Uso un v-for nella stellina per iterarla tante volte quanto dice il voto -->
+                        Score: <i v-for="star in movie.vote_average" class="fas fa-star"></i>
                     </li>
                 </ul>
             </div>
