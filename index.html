@@ -20,10 +20,21 @@
         <div class="header flex-row">
 
             <!-- Logo -->
-            <div class="logo">
-                <a href="">
+            <div class="logo flex-row">
+                <a class="logo-img" href="">
                     <img src="img/logo.png" alt="Logo">
                 </a>
+                <ul class="logo-menu flex-row">
+                    <li>
+                        <a href="">Home</a>
+                    </li>
+                    <li>
+                        <a href="">Movies</a>
+                    </li>
+                    <li>
+                        <a href="">Genres</a>
+                    </li>
+                </ul>
             </div>
             <div class="logo-xs">
                 <a href="">
@@ -60,16 +71,13 @@
                     <ul class="movie-details">
     
                     
-                        <li v-if="movie.media_type == 'movie'" class="title">
-                            Title: {{ movie.title }}
+                        <li class="title">
+                            Title: {{ movie.title ? movie.title : movie.name }}
                         </li>
-                        <li v-else class="title">
-                            Title: {{ movie.name }}
-                        </li>
-        
+                        
                         <!-- Original Title -->
                         <li class="original-title">
-                            Original Title: {{ movie.original_title }}
+                            Original Title: {{ movie.original_title ? movie.original_title : movie.original_name }}
                         </li>
         
                         <!-- Language -->
@@ -93,7 +101,7 @@
     
                         <!-- Overview -->
                         <li>
-                            Overview: {{ movie.overview }}
+                            <em>Overview: " {{ movie.overview }} "</em>
                         </li>
                     </ul>
                 </div>
