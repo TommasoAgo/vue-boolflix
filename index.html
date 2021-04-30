@@ -25,6 +25,11 @@
                     <img src="img/logo.png" alt="Logo">
                 </a>
             </div>
+            <div class="logo-xs">
+                <a href="">
+                    <img src="img/logo-xs.webp" alt="Logo">
+                </a>
+            </div>
 
             <!-- Search input -->
             <div class="search-movie fkex-row">
@@ -46,7 +51,11 @@
                 
                 <!-- Poster -->
                 <div class="poster">
-                    <img class="movie-img" :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="">
+                    <img v-if="movie.poster_path != null" 
+                        class="movie-img" 
+                        :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path">
+                    <img v-else src="img/not-found.jpg" 
+                        class="movie-img not-found">
 
                     <ul class="movie-details">
     

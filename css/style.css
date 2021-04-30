@@ -38,6 +38,10 @@ body {
     width: 20%;
 }
 
+.logo-xs {
+    display: none;
+}
+
 /*  */
 
 /* Search Movie*/
@@ -83,13 +87,12 @@ body {
 .movie-container {
     padding: 40px;
     
-    flex-wrap: wrap;
-
-    justify-content: center;
+    flex-wrap: no-wrap;
+    overflow-x: auto;
 }
 
-.single-movie {
-    border-radius: 5px;
+.movie-container::-webkit-scrollbar {
+    display: none;
 }
 
 /* Poster */
@@ -101,6 +104,12 @@ body {
 .movie-details {
     color: white;
     display: none;
+
+    padding: 20px 20px 0 20px;
+
+    max-height: 430px;
+
+    overflow-y: auto;
 }
 
 /* Hover on single movie */
@@ -113,6 +122,10 @@ body {
     display: block;
 }
 
+.not-found {
+    height: 450px;
+}
+
 /* Star */
 .fa-star {
     color: #f8b705;
@@ -122,4 +135,44 @@ body {
 .language img{
     width: 15px;
     vertical-align: middle;
+}
+
+
+/* Responsive */
+@media all and (max-width: 768px) {
+    .logo {
+        display: none;
+    }
+
+    .logo-xs {
+        display: block;
+    }
+
+    .logo-xs img {
+        min-height: 60px;
+        width: 40%;
+    }
+
+    .search-movie img {
+        width: 10%;
+    }
+
+    /* MOVIES */
+    .movie-container {
+        padding: 40px;
+        
+        flex-wrap: wrap;
+    }
+
+    .poster,
+    .movie-details {
+        width: 200px;
+    }
+
+    .movie-details {
+        max-height: 300px;
+
+        overflow-y: auto;
+    }
+
 }
