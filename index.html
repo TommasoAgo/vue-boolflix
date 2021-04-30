@@ -16,54 +16,81 @@
     
     <div id="root">
 
-        <!-- Search input -->
-        <input @keyup.enter="searchMovie" v-model="movieName" type="text">
-        <button @click="searchMovie">Cerca film</button>
+        <!-- HEADER -->
+        <div class="header flex-row">
+
+            <!-- Logo -->
+            <div class="logo">
+                <a href="">
+                    <img src="img/logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <!-- Search input -->
+            <div class="search-movie fkex-row">
+                <input @keyup.enter="searchMovie" 
+                        v-model="movieName" 
+                        type="text"
+                        class="search-input">
+                <i @click="searchMovie" class="fas fa-search"></i>
+                <img src="img/profile.jpg" alt="Profile">
+            </div>
+        </div>
 
         <!-- Movie Sample -->
 
-        <div class="movie-container">
+        <div class="movie-container flex-row">
 
-            <div v-for="(movie, index) in movies" class="single-movie">
+            <div v-for="(movie, index) in movies" 
+                class="single-movie">
                 
                 <!-- Poster -->
-                <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="">
+                <div class="poster">
+                    <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="">
 
-                <!-- Movie Title -->
-                <ul class="movie-details">
+                    <ul class="movie-details">
     
                     
-                    <li v-if="movie.media_type == 'movie'" class="title">
-                        Title: {{ movie.title }}
-                    </li>
-                    <li v-else class="title">
-                        Title: {{ movie.title }}
-                    </li>
+                        <li v-if="movie.media_type == 'movie'" class="title">
+                            Title: {{ movie.title }}
+                        </li>
+                        <li v-else class="title">
+                            Title: {{ movie.title }}
+                        </li>
+        
+                        <!-- Original Title -->
+                        <li class="original-title">
+                            Original Title: {{ movie.original_title }}
+                        </li>
+        
+                        <!-- Language -->
+                        <li class="language">
+                            <div v-if="movie.original_language == 'it' || movie.original_language == 'es' || movie.original_language == 'en'" class="actual-language">
+                                <span>Original Language:</span>
+                                <img :src="'img/' + movie.original_language + '.svg'" alt="">
+                            </div>
+                            <div v-else>
+                                Original Language: Unknown
+                            </div>  
+                        </li>
+        
+                        <!-- Score -->
+                        <!-- Score sarà visibile solo se il voto del film(vote_average) è maggiore di 0 -->
+                        <li v-if="movie.vote_average > 0" class="score">
     
-                    <!-- Original Title -->
-                    <li class="original-title">
-                        Original Title: {{ movie.original_title }}
-                    </li>
+                            <!-- Uso un v-for nella stellina per iterarla tante volte quanto dice il voto -->
+                            Score: <i v-for="star in movie.vote_average" class="fas fa-star"></i>
+                        </li>
     
-                    <!-- Language -->
-                    <li class="language">
-                        <div v-if="movie.original_language == 'it' || movie.original_language == 'es' || movie.original_language == 'en'" class="actual-language">
-                            <span>Original Language:</span>
-                            <img :src="'img/' + movie.original_language + '.svg'" alt="">
-                        </div>
-                        <div v-else>
-                            Original Language: Unknown
-                        </div>  
-                    </li>
-    
-                    <!-- Score -->
-                    <!-- Score sarà visibile solo se il voto del film(vote_average) è maggiore di 0 -->
-                    <li v-if="movie.vote_average > 0" class="score">
-
-                        <!-- Uso un v-for nella stellina per iterarla tante volte quanto dice il voto -->
-                        Score: <i v-for="star in movie.vote_average" class="fas fa-star"></i>
-                    </li>
-                </ul>
+                        <!-- Overview -->
+                        <li>
+                            Overview: {{ movie.overview }}
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Movie Title -->
+                
             </div>
         </div>
     </div>
