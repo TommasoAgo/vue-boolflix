@@ -20,67 +20,47 @@
         <button @click="searchMovie">Cerca film</button>
 
         <!-- Movie Sample -->
-        <div v-if="movie.media_type == 'movie'" v-for="(movie, index) in movies" class="single-movie">
 
-            <!-- Movie Title -->
-            <ul class="movie-details">
-                <li class="title">
-                    Title: {{ movie.title }}
-                </li>
+        <div class="movie-container">
 
-                <!-- Original Title -->
-                <li class="original-title">
-                    Original Title: {{ movie.original_title }}
-                </li>
+            <div v-for="(movie, index) in movies" class="single-movie">
+                
+                <!-- Poster -->
+                <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="">
 
-                <!-- Language -->
-                <li class="language">
-                    <div v-if="movie.original_language == 'it' || movie.original_language == 'es' || movie.original_language == 'en'" class="actual-language">
-                        <span>Original Language:</span>
-                        <img :src="'img/' + movie.original_language + '.svg'" alt="">
-                    </div>
-                    <div v-else>
-                        Original Language: Unknown
-                    </div>  
-                </li>
-
-                <!-- Score -->
-                <li class="score">
-                    Score: {{ movie.vote_average }}
-                </li>
-            </ul>
-        </div>
-
-        <!-- TV Series Sample -->
-        <div v-else-if="movie.media_type == 'tv'" v-for="(movie, index) in movies" class="single-series">
-            
-            <!-- Movie Title -->
-            <ul class="movie-details">
-                <li class="title">
-                    Title: {{ movie.name }}
-                </li>
-
-                <!-- Original Title -->
-                <li class="original-title">
-                    Original Title: {{ movie.original_title }}
-                </li>
-
-                <!-- Language -->
-                <li class="language">
-                    <div v-if="movie.original_language == 'it' || movie.original_language == 'es' || movie.original_language == 'en'" class="actual-language">
-                        <span>Original Language:</span>
-                        <img :src="'img/' + movie.original_language + '.svg'" alt="">
-                    </div>
-                    <div v-else>
-                        Original Language: Unknown
-                    </div>  
-                </li>
-
-                <!-- Score -->
-                <li class="score">
-                    Score: {{ movie.vote_average }}
-                </li>
-            </ul>
+                <!-- Movie Title -->
+                <ul class="movie-details">
+    
+                    
+                    <li v-if="movie.media_type == 'movie'" class="title">
+                        Title: {{ movie.title }}
+                    </li>
+                    <li v-else class="title">
+                        Title: {{ movie.title }}
+                    </li>
+    
+                    <!-- Original Title -->
+                    <li class="original-title">
+                        Original Title: {{ movie.original_title }}
+                    </li>
+    
+                    <!-- Language -->
+                    <li class="language">
+                        <div v-if="movie.original_language == 'it' || movie.original_language == 'es' || movie.original_language == 'en'" class="actual-language">
+                            <span>Original Language:</span>
+                            <img :src="'img/' + movie.original_language + '.svg'" alt="">
+                        </div>
+                        <div v-else>
+                            Original Language: Unknown
+                        </div>  
+                    </li>
+    
+                    <!-- Score -->
+                    <li class="score">
+                        Score: {{ movie.vote_average }}
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 

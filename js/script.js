@@ -27,8 +27,13 @@ var app = new Vue(
                 .then((response) => {
                     let result = response.data.results;
                     this.movies = result
-                    console.log(result);
                     this.movieName = '';
+
+                    // Faccio un loop per convertire in numeri da 1 a 5 il voto
+                    this.movies.forEach(element => {
+                        element.vote_average = element.vote_average / 2;
+                        element.vote_average = Math.round(element.vote_average);
+                    });
                 }); 
             }   
         }

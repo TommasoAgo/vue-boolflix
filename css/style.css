@@ -16,8 +16,7 @@ li {
     margin: 10px 0;
 }
 
-.single-series img,
-.single-movie img {
+.language img{
     width: 15px;
     vertical-align: middle;
 }
