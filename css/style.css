@@ -105,7 +105,7 @@ body {
 
 /* Hover on single movie */
 
-.single-movie:hover .poster img {
+.single-movie:hover .poster .movie-img {
     display: none;
 }
 
