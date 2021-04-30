@@ -46,7 +46,7 @@
 
         <div class="movie-container flex-row">
 
-            <div v-for="(movie, index) in movies" 
+            <div v-for="movie in movies" 
                 class="single-movie">
                 
                 <!-- Poster -->
@@ -64,7 +64,7 @@
                             Title: {{ movie.title }}
                         </li>
                         <li v-else class="title">
-                            Title: {{ movie.title }}
+                            Title: {{ movie.name }}
                         </li>
         
                         <!-- Original Title -->

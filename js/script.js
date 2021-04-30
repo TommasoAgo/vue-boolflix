@@ -26,7 +26,7 @@ var app = new Vue(
                 })  
                 .then((response) => {
                     let result = response.data.results;
-                    this.movies = result
+                    this.movies = result;
                     this.movieName = '';
 
                     // Faccio un loop per convertire in numeri da 1 a 5 il voto
@@ -36,6 +36,28 @@ var app = new Vue(
                     });
                 }); 
             }   
+        },
+        mounted() {
+            axios
+                .get('https://api.themoviedb.org/3/movie/popular', {
+                    params: {
+                        "api_key": '6c5e72b5c6b0f7602a85d01cf04bc5cd',
+                        "query": this.movieName
+                    }
+                })  
+                .then((response) => {
+                    let result = response.data.results;
+                    this.movies = result;
+                    this.movieName = '';
+
+                    console.log(this.movies);
+
+                    // Faccio un loop per convertire in numeri da 1 a 5 il voto
+                    this.movies.forEach(element => {
+                        element.vote_average = element.vote_average / 2;
+                        element.vote_average = Math.round(element.vote_average);
+                    });
+                }); 
         }
     }
 )
