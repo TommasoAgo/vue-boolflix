@@ -95,9 +95,12 @@ body {
     display: none;
 }
 
+
+
 /* Poster */
 .poster {
     width: 300px;
+    height: 400px;
 }
 
 /* Movie Details */
