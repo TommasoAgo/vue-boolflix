@@ -8,10 +8,12 @@ var app = new Vue(
 
             // movies è un Array vuoto che verrà popolato dalla ricerca dell'utente
             movies: [],
+            filteredMovies: [],
 
             // Creo un Array per i generi
             movieGenres: [],
-            selectGenre: ''
+            selectGenre: '',
+            homePage: true
 
         },
         methods: {
@@ -29,27 +31,26 @@ var app = new Vue(
                     }
                 })  
                 .then((response) => {
-                    let result = response.data.results;
+                    const result = response.data.results;
                     this.movies = result;
+                    this.filteredMovies = [];
+                    this.movies.forEach((element) => {
+                        if(element.media_type == 'movie' || element.media_type == 'tv') {
+                            this.filteredMovies.push(element);
+                        }
+                    })
                     this.movieName = '';
 
                     // Faccio un loop per convertire in numeri da 1 a 5 il voto
                     this.movies.forEach(element => {
                         element.vote_average = element.vote_average / 2;
                         element.vote_average = Math.round(element.vote_average);
-
-                        // Creo un array vuoto per metterlo nell'oggetto movie
-                        // in caso il film non abbia genere
-                        let genre_ids = [];
-                        if(element.genre_ids.length > 0) {
-                            element.genre_ids = element.genre_ids;
-                        } else {
-                            element.genre_ids = genre_ids;
-                        }
                         
+                    
                     });
-                    this.selectGenre = ''
-                });  
+                    this.selectGenre = '';
+                    this.homePage = false;
+                });
             }
         },
         mounted() {
