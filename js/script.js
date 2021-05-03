@@ -37,6 +37,16 @@ var app = new Vue(
                     this.movies.forEach(element => {
                         element.vote_average = element.vote_average / 2;
                         element.vote_average = Math.round(element.vote_average);
+
+                        // Creo un array vuoto per metterlo nell'oggetto movie
+                        // in caso il film non abbia genere
+                        let genre_ids = [];
+                        if(element.genre_ids.length > 0) {
+                            element.genre_ids = element.genre_ids;
+                        } else {
+                            element.genre_ids = genre_ids;
+                        }
+                        
                     });
                     this.selectGenre = ''
                 });  

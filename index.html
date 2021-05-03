@@ -66,7 +66,7 @@
         <div class="movie-container flex-row">
 
             <div v-for="movie in movies"
-                v-if="movie.genre_ids.includes(selectGenre) || selectGenre == '' "
+                v-if="movie.genre_ids.includes(selectGenre)  || selectGenre == '' "
                 class="single-movie">
                 
                 <!-- Poster -->
