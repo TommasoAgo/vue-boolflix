@@ -11,8 +11,7 @@ var app = new Vue(
 
             // Creo un Array per i generi
             movieGenres: [],
-            selectGenre: '',
-            selectId: 0
+            selectGenre: ''
 
         },
         methods: {
@@ -39,6 +38,7 @@ var app = new Vue(
                         element.vote_average = element.vote_average / 2;
                         element.vote_average = Math.round(element.vote_average);
                     });
+                    this.selectGenre = ''
                 });  
             }
         },
