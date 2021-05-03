@@ -32,7 +32,13 @@
                         <a href="">Movies</a>
                     </li>
                     <li>
-                        <a href="">Genres</a>
+                        <a href="">Genres<i class="fas fa-chevron-down"></i></a>
+                        <div class="genres-dropdown">
+                            <select name="genres-dropdown" id="genres-dropdown">
+                                <option v-for="genre in movieGenres" :value="genre"> {{ genre.name }} </option>
+                                
+                            </select>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -47,7 +53,8 @@
                 <input @keyup.enter="searchMovie" 
                         v-model="movieName" 
                         type="text"
-                        class="search-input">
+                        class="search-input"
+                        placeholder="Search Movie or Series">
                 <i @click="searchMovie" class="fas fa-search"></i>
                 <img src="img/profile.jpg" alt="Profile">
             </div>
@@ -57,7 +64,7 @@
 
         <div class="movie-container flex-row">
 
-            <div v-for="movie in movies" 
+            <div v-for="movie in movies"
                 class="single-movie">
                 
                 <!-- Poster -->

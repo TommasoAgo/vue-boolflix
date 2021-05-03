@@ -7,7 +7,12 @@ var app = new Vue(
             movieName: '',
 
             // movies è un Array vuoto che verrà popolato dalla ricerca dell'utente
-            movies: []
+            movies: [],
+
+            // Creo un Array per i generi
+            movieGenres: [],
+            selectGenre: '',
+            selectId: 0
 
         },
         methods: {
@@ -34,8 +39,8 @@ var app = new Vue(
                         element.vote_average = element.vote_average / 2;
                         element.vote_average = Math.round(element.vote_average);
                     });
-                }); 
-            }   
+                });  
+            }
         },
         mounted() {
             axios
@@ -50,14 +55,23 @@ var app = new Vue(
                     this.movies = result;
                     this.movieName = '';
 
-                    console.log(this.movies);
-
                     // Faccio un loop per convertire in numeri da 1 a 5 il voto
                     this.movies.forEach(element => {
                         element.vote_average = element.vote_average / 2;
                         element.vote_average = Math.round(element.vote_average);
                     });
-                }); 
+                });
+                
+            axios
+                .get('https://api.themoviedb.org/3/genre/movie/list', {
+                    params: {
+                        "api_key": '6c5e72b5c6b0f7602a85d01cf04bc5cd'
+                    }
+                })
+                .then((response) => {
+                    let movieGenres = response.data.genres;
+                    this.movieGenres = movieGenres;
+                });
         }
     }
 )

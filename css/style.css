@@ -31,11 +31,14 @@ body {
     align-items: center;
     
     background-color: black;
+
+    position: fixed;
+    z-index: 1;
 }
 
 /* Logo */
 .logo {
-    width: 40%;
+    width: 50%;
 
     align-items: center;
 }
@@ -45,7 +48,7 @@ body {
 }
 
 .logo-menu {
-    width: 30%;
+    width: 70%;
 }
 
 .logo li a {
@@ -53,6 +56,16 @@ body {
     text-decoration: none;
 
     padding: 0 20px;
+}
+
+.logo-menu li:hover {
+    transform: scale(1.1);
+}
+
+/* Chevron down */
+.fa-chevron-down {
+   font-size: 10px;
+   margin-left: 5px;
 }
 
 .logo-xs {
@@ -68,7 +81,7 @@ body {
     text-align: right;
     padding-right: 40px;
 
-    width: 60%;
+    width: 50%;
 }
 
 .search-input {
@@ -104,7 +117,7 @@ body {
 
 /* MOVIES */
 .movie-container {
-    padding: 40px;
+    padding-top: 200px;
     
     flex-wrap: wrap;
     justify-content: center;
@@ -166,7 +179,8 @@ body {
 }
 
 .not-found {
-    height: 450px;
+    height: 100%;
+    width: 342px;
 }
 
 /* Star */
@@ -179,7 +193,6 @@ body {
     width: 15px;
     vertical-align: middle;
 }
-
 
 /* Responsive */
 @media all and (max-width: 768px) {
